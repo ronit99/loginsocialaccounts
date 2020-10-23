@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "834917365528",
+    "firebase_url": "https://socialsitelogin-7a95b.firebaseio.com",
+    "project_id": "socialsitelogin-7a95b",
+    "storage_bucket": "socialsitelogin-7a95b.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:834917365528:android:65779f82c40290cdaf106d",
+        "android_client_info": {
+          "package_name": "com.example.demologinsocial"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "834917365528-i78q7e3cdismfrv2kqo5n0kvdkm0sreh.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.demologinsocial",
+            "certificate_hash": "da62c3a2aca0064e01ae92748e45e5ab0eaa8fab"
+          }
+        },
+        {
+          "client_id": "834917365528-abdqp9qb6majisrmjkiffcg8h94hklet.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDkFGXxriKoq10sXSoGUKPursEd3Ypsy6I"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "834917365528-abdqp9qb6majisrmjkiffcg8h94hklet.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
