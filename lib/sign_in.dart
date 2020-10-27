@@ -9,7 +9,6 @@ final GoogleSignIn googleSignIn = GoogleSignIn();
 String name;
 String email;
 String imageUrl;
-String phones;
 
 
 Future<String> signInWithGoogle() async {
@@ -37,7 +36,6 @@ Future<String> signInWithGoogle() async {
     name = user.displayName;
     email = user.email;
     imageUrl = user.photoURL;
-    phones = user.phoneNumber;
 
     final User currentUser = _auth.currentUser;
     assert(user.uid == currentUser.uid);

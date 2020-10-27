@@ -2,17 +2,35 @@ import 'package:flutter/material.dart';
 import 'sign_in.dart';
 import 'first_screen.dart';
 import 'package:firebase_messaging/firebase_messaging.dart';
+import 'package:admob_flutter/admob_flutter.dart';
+import 'ad_manager.dart';
+
 class LoginPage extends StatefulWidget {
   @override
   _LoginPageState createState() => _LoginPageState();
 }
 
 class _LoginPageState extends State<LoginPage> {
-
+  AdmobReward reward;
   final FirebaseMessaging _messaging = FirebaseMessaging();
   @override
+
   void initState() {
     super.initState();
+    reward = AdmobReward(adUnitId: AdManager.rewardId);
+    reward.load();
+    reward = AdmobReward(
+        adUnitId: AdManager.rewardId,
+
+        listener: (event, args) {
+          if (event == AdmobAdEvent.rewarded)
+          {
+
+            print("reward complete");
+          }
+        });
+    reward.load();
+
     _messaging.getToken().then((token) {
       print('Token : $token');
     });
@@ -24,14 +42,18 @@ class _LoginPageState extends State<LoginPage> {
         color: Colors.white,
         child: Center(
           child: Column(
-            mainAxisSize: MainAxisSize.max,
-            mainAxisAlignment: MainAxisAlignment.center,
+            mainAxisSize: MainAxisSize.min,
+            mainAxisAlignment: MainAxisAlignment.start,
+            crossAxisAlignment: CrossAxisAlignment.center,
             children: <Widget>[
-
-              SizedBox(height: 20),
-              FlatButton(
-
+              Text('Login',
+                style: TextStyle(
+                  fontWeight: FontWeight.bold,
+                  fontSize: 30,
+                  color: Colors.blueAccent,
+                ),
               ),
+              SizedBox(height: 20),
               _signInButton(),
             ],
           ),
@@ -42,14 +64,14 @@ class _LoginPageState extends State<LoginPage> {
 
   Widget _signInButton() {
     return OutlineButton(
-      splashColor: Colors.grey,
+      splashColor: Colors.blue,
       onPressed: () {
         signInWithGoogle().then((result) {
           if (result != null) {
             Navigator.of(context).push(
               MaterialPageRoute(
                 builder: (context) {
-                  return FirstScreen();
+                  return FirstScreen(rew: reward,);
                 },
               ),
             );
@@ -69,7 +91,7 @@ class _LoginPageState extends State<LoginPage> {
             Padding(
               padding: const EdgeInsets.only(left: 10),
               child: Text(
-                'Sign in with Google',
+                'Sign in Google',
                 style: TextStyle(
                   fontSize: 20,
                   color: Colors.grey,
